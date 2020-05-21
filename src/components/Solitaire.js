@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import Deck from '../components/Deck';
+import Foundation1 from '../components/Foundation1';
+import Foundation2 from '../components/Foundation2';
+import Foundation3 from '../components/Foundation3';
+import Foundation4 from '../components/Foundation4';
 import Tableau from '../components/Tableau';
 
 const GameBoard = styled.div`
@@ -8,40 +12,9 @@ const GameBoard = styled.div`
   width: 100vw;
   height: 100%;
   grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr 3fr;
   gap: 15px;
   padding: 25px;
-`;
-
-const Foundation1 = styled.div`
-  width: 100%;
-  height: 200px;
-  grid-column: 4 / 5;
-  border: 3px solid #545c6d;
-  border-radius: 9px;
-`;
-
-const Foundation2 = styled.div`
-  width: 100%;
-  height: 200px;
-  grid-column: 5 / 6;
-  border: 3px solid #545c6d;
-  border-radius: 9px;
-`;
-
-const Foundation3 = styled.div`
-  width: 100%;
-  height: 200px;
-  grid-column: 6 / 7;
-  border: 3px solid #545c6d;
-  border-radius: 9px;
-`;
-
-const Foundation4 = styled.div`
-  width: 100%;
-  height: 200px;
-  grid-column: 7 / 8;
-  border: 3px solid #545c6d;
-  border-radius: 9px;
 `;
 
 const Solitaire = () => {
