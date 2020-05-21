@@ -5,8 +5,8 @@ const Foundation1Div = styled.div`
   width: 100%;
   height: 200px;
   grid-column: 4 / 5;
-  border: 3px solid #545c6d;
-  border-radius: 9px;
+  border: 3px solid #345c7d;
+  border-radius: 10px;
 `;
 
 const Foundation1 = () => {

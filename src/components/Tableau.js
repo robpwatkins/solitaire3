@@ -8,12 +8,12 @@ import Pile6 from './Pile6';
 import Pile7 from './Pile7';
 import styled from 'styled-components';
 
-const Tableau = () => {
+const Tableau = (props) => {
   return (
     <>
       <Pile1 />
       <Pile2 />
-      <Pile3 />
+      <Pile3 setClickedCard={props.setClickedCard} />
       <Pile4 />
       <Pile5 />
       <Pile6 />

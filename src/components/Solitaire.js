@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragent, useState } from 'react';
 import styled from 'styled-components';
 import Deck from '../components/Deck';
 import Foundation1 from '../components/Foundation1';
@@ -17,19 +17,29 @@ const GameBoard = styled.div`
   padding: 25px;
 `;
 
+const Heading = styled.div`
+  width: 100%;
+  text-align: center;
+`;
+
 const Solitaire = () => {
+  const [clickedCard, setClickedCard] = useState([]);
+  console.log({clickedCard});
+
   return (
-    <div>
-      <h1>Solitaire!</h1>
+    <>
+      <Heading>
+        <h1>Solitaire!</h1>
+      </Heading>
       <GameBoard>
         <Deck />
         <Foundation1 />
         <Foundation2 />
         <Foundation3 />
         <Foundation4 />
-        <Tableau />
+        <Tableau setClickedCard={setClickedCard} />
       </GameBoard>
-    </div>
+    </>
   )
 }
 
