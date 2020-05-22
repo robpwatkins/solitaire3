@@ -12,15 +12,22 @@ const Foundation1Div = styled.div`
 
 const Foundation1 = (props) => {
   const [cardStack, setCardStack] = useState([]);
+  const [currentRank, setCurrentRank] = useState(0);
 
   const handleClick = () => {
     if (props.clickedCard.length > 0) {
+      let incomingRank = props.clickedCard[0].rank;
+      console.log({incomingRank});
+      if (incomingRank !== currentRank + 1) {
+        return;
+      }
       setCardStack([cardStack, ...props.clickedCard]);
       props.removeCard();
+      setCurrentRank(incomingRank);
     } else {
       let cards = cardStack;
-      cards.splice(0);
-      setCardStack([...cards]);
+      cards.splice(cards.length - 1);
+      setCardStack(...cards);
     }
   }
 

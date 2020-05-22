@@ -28,7 +28,7 @@ const Card = (props) => {
       <CardDiv 
         onClick={handleClick}
         >
-        {props.rank} of {props.suit}
+        {props.rank === 1 ? 'Ace' : `${props.rank}`} of {props.suit}
       </CardDiv>
     </>    
   )
