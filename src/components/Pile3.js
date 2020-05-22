@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Card from '../components/Card';
+import { cards } from '../cards';
 
 const PileDiv = styled.div`
   grid-column: 3 / 4;
@@ -10,9 +11,21 @@ const PileDiv = styled.div`
 `;
 
 const Pile3 = (props) => {
+  const [cardStack, setCardStack] = useState(['Ace of Spades!']);
+
+  const handleClick = () => {
+    let cards = cardStack;
+    let card = cards.splice(0);
+    setCardStack(...cards);
+    props.setClickedCard(...card);
+    // console.log(cardStack.length);
+  }
+
   return (
-    <PileDiv>
-      <Card setClickedCard={props.setClickedCard} />
+    <PileDiv onClick={handleClick}>
+      {cardStack &&
+        <Card card={cardStack[0]} />
+      }
     </PileDiv>
   )
 }

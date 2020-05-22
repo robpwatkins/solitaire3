@@ -1,10 +1,7 @@
-import React, { Fragent, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Deck from '../components/Deck';
-import Foundation1 from '../components/Foundation1';
-import Foundation2 from '../components/Foundation2';
-import Foundation3 from '../components/Foundation3';
-import Foundation4 from '../components/Foundation4';
+import Foundations from '../components/Foundations';
 import Tableau from '../components/Tableau';
 
 const GameBoard = styled.div`
@@ -28,15 +25,9 @@ const Solitaire = () => {
 
   return (
     <>
-      <Heading>
-        <h1>Solitaire!</h1>
-      </Heading>
       <GameBoard>
         <Deck />
-        <Foundation1 />
-        <Foundation2 />
-        <Foundation3 />
-        <Foundation4 />
+        <Foundations clickedCard={clickedCard} />
         <Tableau setClickedCard={setClickedCard} />
       </GameBoard>
     </>
