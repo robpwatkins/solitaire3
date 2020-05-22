@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Card from '../components/Card';
-import { cards } from '../cards';
+import Card from '../containers/Card';
 
 const PileDiv = styled.div`
   grid-column: 3 / 4;
@@ -11,18 +10,18 @@ const PileDiv = styled.div`
 `;
 
 const Pile3 = (props) => {
-  const [cardStack, setCardStack] = useState(['Ace of Spades!']);
+  const [cardStack, setCardStack] = useState(["Ace of Diamonds!"]);
 
   const handleClick = () => {
     let cards = cardStack;
-    let card = cards.splice(0);
+    cards.splice(0);
     setCardStack([...cards]);
-    props.setClickedCard(...card);
-    // console.log(cardStack.length);
   }
 
   return (
-    <PileDiv onClick={handleClick}>
+    <PileDiv 
+      onClick={handleClick}
+    >
       {cardStack.length > 0 &&
         <Card card={cardStack[0]} />
       }

@@ -12,10 +12,21 @@ const Foundation2Div = styled.div`
 
 const Foundation2 = (props) => {
   const [cardStack, setCardStack] = useState([]);
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    if (props.clickedCard.length < 1) {
+      return;
+    }
+    setCardStack([...props.clickedCard]);
+    setIsClicked(true);
+  }
 
   return (
-    <Foundation2Div onClick={() => setCardStack([...props.clickedCard])}>
-      {cardStack.length > 0 && <Card card={cardStack} />}
+    <Foundation2Div onClick={handleClick}>
+      {props.clickedCard.length > 0 &&
+      isClicked &&
+      <Card card={props.clickedCard[0]} />}
     </Foundation2Div>
   )
 }

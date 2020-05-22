@@ -21,7 +21,6 @@ const Heading = styled.div`
 
 const Solitaire = () => {
   const [clickedCard, setClickedCard] = useState([]);
-  console.log({clickedCard});
 
   return (
     <>

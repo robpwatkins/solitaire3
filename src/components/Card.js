@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { cards } from '../cards';
 
 const CardDiv = styled.div`
   display: flex;
@@ -14,9 +13,17 @@ const CardDiv = styled.div`
 
 const Card = (props) => {
 
+  const handleClick = (event) => {
+    let card = event.target.getAttribute('value');
+    props.addCard(card);
+  }
+
   return (
     <>
-      <CardDiv>
+      <CardDiv 
+        value={props.card}
+        onClick={handleClick}
+        >
         {props.card}
       </CardDiv>
     </>    
