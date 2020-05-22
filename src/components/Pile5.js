@@ -10,7 +10,12 @@ const PileDiv = styled.div`
 `;
 
 const Pile5 = (props) => {
-  const [cardStack, setCardStack] = useState(["Jack of Diamonds!"]);
+  const [cardStack, setCardStack] = useState([
+    {
+      rank: 'Jack',
+      suit: 'Diamonds!'
+    }
+  ]);
 
   const handleClick = () => {
     let cards = cardStack;
@@ -21,12 +26,15 @@ const Pile5 = (props) => {
       props.removeCard();
     }
   }
+
+  const topCard = cardStack[cardStack.length - 1];
+
   return (
     <PileDiv 
       onClick={handleClick}
     >
       {cardStack.length > 0 &&
-        <Card card={cardStack[0]} />
+        <Card {...topCard} />
       }
     </PileDiv>
   )

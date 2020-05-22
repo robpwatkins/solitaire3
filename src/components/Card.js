@@ -14,18 +14,20 @@ const CardDiv = styled.div`
 
 const Card = (props) => {
 
-  const handleClick = (event) => {
-    let card = event.target.getAttribute('value');
+  const handleClick = () => {
+    let card = {
+      rank: props.rank,
+      suit: props.suit
+    };
     props.addCard(card);
   }
 
   return (
     <>
       <CardDiv 
-        value={props.card}
         onClick={handleClick}
         >
-        {props.card}
+        {props.rank} of {props.suit}
       </CardDiv>
     </>    
   )

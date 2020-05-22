@@ -12,7 +12,6 @@ const Foundation2Div = styled.div`
 
 const Foundation2 = (props) => {
   const [cardStack, setCardStack] = useState([]);
-  const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
     if (props.clickedCard.length > 0) {
