@@ -7,10 +7,10 @@ import Foundation4 from '../containers/Foundation4';
 const Foundations = (props) => {
   return (
     <>
-      <Foundation1 clickedCard={props.clickedCard} />
-      <Foundation2 clickedCard={props.clickedCard} />
-      <Foundation3 clickedCard={props.clickedCard} />
-      <Foundation4 clickedCard={props.clickedCard} />
+      <Foundation1 />
+      <Foundation2 />
+      <Foundation3 />
+      <Foundation4 />
     </>
   )
 }

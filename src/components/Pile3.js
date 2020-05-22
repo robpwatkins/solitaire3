@@ -16,6 +16,10 @@ const Pile3 = (props) => {
     let cards = cardStack;
     cards.splice(0);
     setCardStack([...cards]);
+    if (props.clickedCard.length > 0) {
+      setCardStack([...props.clickedCard]);
+      props.removeCard();
+    }
   }
 
   return (

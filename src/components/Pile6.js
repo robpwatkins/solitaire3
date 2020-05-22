@@ -9,13 +9,17 @@ const PileDiv = styled.div`
   border-radius: 10px;
 `;
 
-const Pile6 = () => {
+const Pile6 = (props) => {
   const [cardStack, setCardStack] = useState(["2 of Clubs!"]);
 
   const handleClick = () => {
     let cards = cardStack;
     cards.splice(0);
     setCardStack([...cards]);
+    if (props.clickedCard.length > 0) {
+      setCardStack([...props.clickedCard]);
+      props.removeCard();
+    }
   }
   return (
     <PileDiv 

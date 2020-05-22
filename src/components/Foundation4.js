@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Card from '../components/Card';
+import Card from '../containers/Card';
 
 const Foundation4Div = styled.div`
   width: 100%;
@@ -13,9 +13,22 @@ const Foundation4Div = styled.div`
 const Foundation4 = (props) => {
   const [cardStack, setCardStack] = useState([]);
 
+  const handleClick = () => {
+    if (props.clickedCard.length > 0) {
+      setCardStack([cardStack, ...props.clickedCard]);
+      props.removeCard();
+    } else {
+      let cards = cardStack;
+      cards.splice(0);
+      setCardStack([...cards]);
+    }
+  }
+
   return (
-    <Foundation4Div onClick={() => setCardStack([...props.clickedCard])}>
-      {cardStack.length > 0 && <Card card={cardStack} />}
+    <Foundation4Div onClick={handleClick}>
+      {cardStack.length > 0 && (
+        <Card card={cardStack[cardStack.length - 1]} />
+      )}
     </Foundation4Div>
   )
 }

@@ -15,14 +15,13 @@ const GameBoard = styled.div`
 `;
 
 const Solitaire = () => {
-  const [clickedCard, setClickedCard] = useState([]);
 
   return (
     <>
       <GameBoard>
         <Deck />
-        <Foundations clickedCard={clickedCard} />
-        <Tableau setClickedCard={setClickedCard} />
+        <Foundations />
+        <Tableau />
       </GameBoard>
     </>
   )
