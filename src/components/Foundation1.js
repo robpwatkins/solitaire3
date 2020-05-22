@@ -17,7 +17,6 @@ const Foundation1 = (props) => {
   const handleClick = () => {
     if (props.clickedCard.length > 0) {
       let incomingRank = props.clickedCard[0].rank;
-      console.log({incomingRank});
       if (incomingRank !== currentRank + 1) {
         return;
       }
@@ -28,6 +27,7 @@ const Foundation1 = (props) => {
       let cards = cardStack;
       cards.splice(cards.length - 1);
       setCardStack(...cards);
+      setCurrentRank(currentRank - 1);
     }
   }
 

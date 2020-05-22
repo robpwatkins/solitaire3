@@ -30,9 +30,7 @@ const Pile3 = (props) => {
   let topCard = cardStack[cardStack.length - 1];
 
   return (
-    <PileDiv 
-      onClick={handleClick}
-    >
+    <PileDiv onClick={handleClick}>
       {cardStack.length > 0 &&
         <Card {...topCard} />
       }
