@@ -1,11 +1,11 @@
 import React from 'react';
-import Pile1 from './Pile1';
-import Pile2 from './Pile2';
+import Pile1 from '../containers/Pile1';
+import Pile2 from '../containers/Pile2';
 import Pile3 from '../containers/Pile3';
-import Pile4 from './Pile4';
-import Pile5 from './Pile5';
-import Pile6 from './Pile6';
-import Pile7 from './Pile7';
+import Pile4 from '../containers/Pile4';
+import Pile5 from '../containers/Pile5';
+import Pile6 from '../containers/Pile6';
+import Pile7 from '../containers/Pile7';
 // import styled from 'styled-components';
 
 const Tableau = (props) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Deck from '../components/Deck';
+import Deck from '../containers/Deck';
 import Foundations from '../components/Foundations';
 import Tableau from '../components/Tableau';
 

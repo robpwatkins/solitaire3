@@ -15,7 +15,7 @@ const Foundation3 = (props) => {
 
   return (
     <Foundation3Div onClick={() => setCardStack([...props.clickedCard])}>
-      {cardStack.length > 0 && <Card card={cardStack} />}
+      {cardStack.length > 0 && <Card card={cardStack[0]} />}
     </Foundation3Div>
   )
 }

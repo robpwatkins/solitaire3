@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Foundation2 from '../components/Foundation2';
+import Foundation4 from '../components/Foundation4';
 import { removeCard, addCard } from '../redux/actions';
 
 const mapStateToProps = (state) => {
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Foundation2);
+export default connect(mapStateToProps, mapDispatchToProps)(Foundation4);

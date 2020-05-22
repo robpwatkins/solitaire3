@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Card from '../containers/Card';
 
 const PileDiv = styled.div`
   grid-column: 2 / 3;
@@ -9,8 +10,20 @@ const PileDiv = styled.div`
 `;
 
 const Pile2 = () => {
+  const [cardStack, setCardStack] = useState(["6 of Hearts!"]);
+
+  const handleClick = () => {
+    let cards = cardStack;
+    cards.splice(0);
+    setCardStack([...cards]);
+  }
   return (
-    <PileDiv>
+    <PileDiv 
+      onClick={handleClick}
+    >
+      {cardStack.length > 0 &&
+        <Card card={cardStack[0]} />
+      }
     </PileDiv>
   )
 }
