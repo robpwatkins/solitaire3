@@ -14,11 +14,6 @@ const GameBoard = styled.div`
   padding: 25px;
 `;
 
-const Heading = styled.div`
-  width: 100%;
-  text-align: center;
-`;
-
 const Solitaire = () => {
   const [clickedCard, setClickedCard] = useState([]);
 

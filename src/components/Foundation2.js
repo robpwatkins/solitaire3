@@ -26,7 +26,7 @@ const Foundation2 = (props) => {
     <Foundation2Div onClick={handleClick}>
       {props.clickedCard.length > 0 &&
       isClicked &&
-      <Card card={props.clickedCard[0]} />}
+      <Card card={cardStack[0]} />}
     </Foundation2Div>
   )
 }
