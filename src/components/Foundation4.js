@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Card from '../components/Card';
 
-const Foundation1Div = styled.div`
+const Foundation4Div = styled.div`
   width: 100%;
   height: 200px;
   grid-column: 7 / 8;
@@ -9,10 +10,14 @@ const Foundation1Div = styled.div`
   border-radius: 10px;
 `;
 
-const Foundation1 = () => {
+const Foundation4 = (props) => {
+  const [cardStack, setCardStack] = useState([]);
+
   return (
-    <Foundation1Div />
+    <Foundation4Div onClick={() => setCardStack([...props.clickedCard])}>
+      {cardStack.length > 0 && <Card card={cardStack} />}
+    </Foundation4Div>
   )
 }
 
-export default Foundation1;
+export default Foundation4;

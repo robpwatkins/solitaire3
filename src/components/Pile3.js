@@ -16,14 +16,14 @@ const Pile3 = (props) => {
   const handleClick = () => {
     let cards = cardStack;
     let card = cards.splice(0);
-    setCardStack(...cards);
+    setCardStack([...cards]);
     props.setClickedCard(...card);
     // console.log(cardStack.length);
   }
 
   return (
     <PileDiv onClick={handleClick}>
-      {cardStack &&
+      {cardStack.length > 0 &&
         <Card card={cardStack[0]} />
       }
     </PileDiv>
