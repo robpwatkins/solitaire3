@@ -28,7 +28,7 @@ const Pile1 = (props) => {
     }
   }
 
-  const topCard = cardStack[cardStack.length - 1];
+  let topCard = cardStack[cardStack.length - 1];
 
   return (
     <PileDiv onClick={handleClick}>

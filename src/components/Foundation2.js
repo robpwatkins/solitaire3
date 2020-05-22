@@ -24,10 +24,12 @@ const Foundation2 = (props) => {
     }
   }
 
+  let topCard = cardStack[cardStack.length - 1];
+
   return (
     <Foundation2Div onClick={handleClick}>
       {cardStack.length > 0 && (
-        <Card card={cardStack[cardStack.length - 1]} />
+        <Card {...topCard} />
       )}
     </Foundation2Div>
   )
