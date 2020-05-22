@@ -12,7 +12,7 @@ const PileDiv = styled.div`
 const Pile5 = (props) => {
   const [cardStack, setCardStack] = useState([
     {
-      rank: 'Jack',
+      rank: '11',
       suit: 'Diamonds!'
     }
   ]);
