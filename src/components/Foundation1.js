@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Card from '../containers/Card';
+import { usePreviousValue } from '../usePreviousValue';
 
 const Foundation1Div = styled.div`
   width: 100%;
@@ -12,26 +13,35 @@ const Foundation1Div = styled.div`
 
 const Foundation1 = (props) => {
   const [cardStack, setCardStack] = useState([]);
-  const [currentRank, setCurrentRank] = useState(0);
+  
+  let topCard = cardStack[cardStack.length - 1];
+  
+  const prevCard = usePreviousValue(topCard);
 
   const handleClick = () => {
     if (props.clickedCard.length > 0) {
-      let incomingRank = props.clickedCard[0].rank;
-      if (incomingRank !== currentRank + 1) {
+      let incomingCard = props.clickedCard[0];
+      let incomingCardStr = JSON.stringify(incomingCard);
+      let prevCardStr = JSON.stringify(prevCard);
+      if (cardStack.length === 0) {
+        if (incomingCard.rank !== 1) {
+          return;
+        }
+      }
+      if (incomingCard.rank !== topCard.rank + 1) {
         return;
       }
       setCardStack([cardStack, ...props.clickedCard]);
       props.removeCard();
-      setCurrentRank(incomingRank);
+      // setCurrentRank(incomingRank);
     } else {
       let cards = cardStack;
       cards.splice(cards.length - 1);
       setCardStack(...cards);
-      setCurrentRank(currentRank - 1);
+      // setCurrentRank(currentRank - 1);
     }
   }
 
-  let topCard = cardStack[cardStack.length - 1];
 
   return (
     <Foundation1Div onClick={handleClick}>

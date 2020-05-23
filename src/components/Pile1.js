@@ -17,7 +17,7 @@ const Pile1 = (props) => {
       suit: 'Clubs!',
     },
     {
-      rank: 5,
+      rank: 1,
       suit: 'Spades!',
     }
   ]);
