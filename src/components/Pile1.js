@@ -16,33 +16,55 @@ const Pile1 = (props) => {
     //   rank: 6,
     //   suit: 'Clubs!'
     // },
-    {
-      rank: 2,
-      suit: 'Clubs!',
-    }
+    // {
+    //   rank: 2,
+    //   suit: 'Clubs!',
+    // }
   ]);
   const prevCard = usePreviousValue(cardStack[cardStack.length - 1]);
 
   let topCard = cardStack[cardStack.length - 1];
 
+  // const handleClick = () => {
+  //   if (props.clickedCard.length > 0) {
+  //     let incomingCard = props.clickedCard[0];
+  //     if (cardStack.length > 0) {
+  //       if (incomingCard.rank !== topCard.rank + 1) {
+  //         if (JSON.stringify(incomingCard) !== JSON.stringify(prevCard)) {
+  //           return;
+  //         }
+  //       }
+  //     }
+  //     if (cardStack.length === 0 && JSON.stringify(incomingCard) !== JSON.stringify(prevCard)) {
+  //       return;
+  //     }
+  //     setCardStack([...cardStack, ...props.clickedCard]);
+  //     props.removeCard();
+  //   } else {
+  //     let cards = cardStack;
+  //     cards.splice(cards.length - 1);
+  //     setCardStack([...cards]);
+  //   }
+  // }
+
   const handleClick = () => {
+    let incomingCard = props.clickedCard[0];
+    let incomingCardStr = JSON.stringify(incomingCard);
+    let topCardStr = JSON.stringify(topCard);
     if (props.clickedCard.length > 0) {
-      let incomingCard = {
-        rank: props.clickedCard[0].rank,
-        suit: props.clickedCard[0].suit
-      }
-      if (cardStack.length > 0) {
-        if (incomingCard.rank !== topCard.rank + 1) {
-          if (JSON.stringify(incomingCard) !== JSON.stringify(prevCard)) {
+      if (incomingCard.rank === topCard.rank + 1) { 
+        if (((topCardStr.includes('Spades!') || topCardStr.includes('Clubs!')) &&
+           (incomingCardStr.includes('Spades!') || incomingCardStr.includes('Clubs!')))
+           || (topCardStr.includes('Hearts!') || topCardStr.includes('Diamonds!')) &&
+           (incomingCardStr.includes('Hearts!') || incomingCardStr.includes('Diamonds'))) {
             return;
-          }
         }
       }
-      if (cardStack.length === 0 && JSON.stringify(incomingCard) !== JSON.stringify(prevCard)) {
-        return;
-      }
-      setCardStack([...cardStack, ...props.clickedCard]);
-      props.removeCard();
+    } 
+    console.log(prevCard);
+    let prevCardStr = JSON.stringify(prevCard);
+    if (incomingCardStr !== prevCardStr) {
+      return;
     } else {
       let cards = cardStack;
       cards.splice(cards.length - 1);
