@@ -57,32 +57,6 @@ const Pile1 = (props) => {
     }
   }
 
-  // const handleClick = () => {
-  //   let incomingCard = props.clickedCard[0];
-  //   let incomingCardStr = JSON.stringify(incomingCard);
-  //   let topCardStr = JSON.stringify(topCard);
-  //   if (props.clickedCard.length > 0) {
-  //     if (incomingCard.rank === topCard.rank + 1) { 
-  //       if (((topCardStr.includes('Spades!') || topCardStr.includes('Clubs!')) &&
-  //          (incomingCardStr.includes('Spades!') || incomingCardStr.includes('Clubs!')))
-  //          || (topCardStr.includes('Hearts!') || topCardStr.includes('Diamonds!')) &&
-  //          (incomingCardStr.includes('Hearts!') || incomingCardStr.includes('Diamonds'))) {
-  //           return;
-  //       }
-  //     }
-  //   } 
-  //   console.log(prevCard);
-  //   let prevCardStr = JSON.stringify(prevCard);
-  //   if (incomingCardStr !== prevCardStr) {
-  //     return;
-  //   } else {
-  //     let cards = cardStack;
-  //     cards.splice(cards.length - 1);
-  //     setCardStack([...cards]);
-  //   }
-  // }
-
-
   return (
     <PileDiv onClick={handleClick}>
       {cardStack.length > 0 && (
