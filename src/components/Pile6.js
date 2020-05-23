@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Card from '../containers/Card';
+import { usePreviousValue } from '../usePreviousValue';
 
 const PileDiv = styled.div`
   grid-column: 6 / 7;
@@ -12,22 +13,53 @@ const PileDiv = styled.div`
 const Pile6 = (props) => {
   const [cardStack, setCardStack] = useState([
     {
-      rank: 2,
-      suit: 'Clubs!'
+      rank: 8,
+      suit: 'Hearts!'
     }
   ]);
 
+  let topCard = cardStack[cardStack.length - 1];
+
+  const prevCard = usePreviousValue(topCard);
+
   const handleClick = () => {
-    let cards = cardStack;
-    cards.splice(0);
-    setCardStack([...cards]);
     if (props.clickedCard.length > 0) {
-      setCardStack([...props.clickedCard]);
+      let incomingCard = props.clickedCard[0];
+      let incomingCardStr = JSON.stringify(incomingCard);
+      let prevCardStr = JSON.stringify(prevCard);
+      if (cardStack.length > 0) {
+        let incomingCardColor;
+        let topCardColor;
+        if (incomingCard.suit === 'Clubs!' || incomingCard.suit === 'Spades!') {
+          incomingCardColor = 'B';
+          } else
+          incomingCardColor = 'R';
+          if (topCard.suit === 'Clubs!' || topCard.suit === 'Spades!') {
+            topCardColor = 'B';
+          } else
+          topCardColor = 'R';
+        if (incomingCard.rank !== topCard.rank - 1) {
+          if (incomingCardStr !== prevCardStr) {
+            return;
+          }
+        }
+        if (incomingCardColor !== topCardColor) {
+              setCardStack([...cardStack, ...props.clickedCard]);
+              props.removeCard();
+        }
+      }
+      if (incomingCardStr !== prevCardStr) {
+        return;
+      }
+      setCardStack([...cardStack, ...props.clickedCard]);
       props.removeCard();
+    } else {
+      let cards = cardStack;
+      cards.splice(cards.length - 1);
+      setCardStack([...cards]);
     }
   }
 
-  let topCard = cardStack[cardStack.length - 1];
 
   return (
     <PileDiv 
