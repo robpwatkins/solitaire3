@@ -16,8 +16,8 @@ const Pile2 = (props) => {
       suit: 'Diamonds!'
     },
     {
-      rank: 4,
-      suit: 'Hearts!'
+      rank: 3,
+      suit: 'Diamonds!'
     }
   ]);
   const [currentRank, setCurrentRank] = useState(null);
