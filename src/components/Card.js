@@ -19,7 +19,8 @@ const Card = (props) => {
     if (props.clickedCard.length === 0) {
       let card = {
         rank: props.rank,
-        suit: props.suit
+        suit: props.suit,
+        color: props.color
       };
       props.addCard(card);
     }

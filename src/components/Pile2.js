@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Card from '../containers/Card';
+import { usePreviousValue } from '../usePreviousValue';
 
 const PileDiv = styled.div`
   grid-column: 2 / 3;
@@ -13,29 +14,42 @@ const Pile2 = (props) => {
   const [cardStack, setCardStack] = useState([
     {
       rank: 6,
-      suit: 'Diamonds!'
+      suit: 'Diamonds!',
+      color: 'R'
     },
     {
-      rank: 3,
-      suit: 'Diamonds!'
+      rank: 4,
+      suit: 'Hearts!',
+      color: 'R'
     }
   ]);
-  const [currentRank, setCurrentRank] = useState(null);
 
-  useEffect(() => {
-    if (cardStack.length > 0) {
-      setCurrentRank(cardStack[cardStack.length - 1].rank);
-    } else
-    setCurrentRank(null);
-  }, [currentRank, cardStack]);
+  let topCard = cardStack[cardStack.length - 1];
+
+  const prevCard = usePreviousValue(topCard);
 
   const handleClick = () => {
     if (props.clickedCard.length > 0) {
-      let incomingRank = props.clickedCard[0].rank;
-      if (incomingRank !== currentRank + 1) {
-        if (currentRank !== null) {
-          return;
+      let incomingCard = props.clickedCard[0];
+      let incomingCardStr = JSON.stringify(incomingCard);
+      let prevCardStr = JSON.stringify(prevCard);
+      if (cardStack.length > 0) {
+        console.log(incomingCard.rank, topCard.rank);
+        if (incomingCard.rank !== topCard.rank - 1) {
+          if (incomingCardStr !== prevCardStr) {
+            return;
+          }
         }
+        if (((topCard.suit === 'Spades!' || topCard.suit === 'Clubs!') &&
+            (incomingCard.suit === 'Hearts!' || incomingCard.suit === 'Diamonds!'))
+            || (topCard.suit === 'Hearts!' || topCard.suit === 'Diamonds!') &&
+            (incomingCard.suit === 'Spades!' || incomingCard.suit === 'Clubs')) {
+              setCardStack([...cardStack, ...props.clickedCard]);
+              props.removeCard();
+        }
+      }
+      if (incomingCardStr !== prevCardStr) {
+        return;
       }
       setCardStack([...cardStack, ...props.clickedCard]);
       props.removeCard();
@@ -46,15 +60,11 @@ const Pile2 = (props) => {
     }
   }
 
-  let topCard = cardStack[cardStack.length - 1];
-  
   return (
-    <PileDiv 
-      onClick={handleClick}
-    >
-      {cardStack.length > 0 &&
+    <PileDiv onClick={handleClick}>
+      {cardStack.length > 0 && (
         <Card {...topCard} />
-      }
+      )}
     </PileDiv>
   )
 }

@@ -1,3 +1,8 @@
 export default {
-  clickedCard: []
+  clickedCard: [
+  //   {
+  //   rank: 3,
+  //   suit: 'Hearts!'
+  // }
+]
 };

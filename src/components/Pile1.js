@@ -12,13 +12,15 @@ const PileDiv = styled.div`
 
 const Pile1 = (props) => {
   const [cardStack, setCardStack] = useState([
+    // {
+    //   rank: 6,
+    //   suit: 'Clubs!',
+    //   color: 'B'
+    // },
     {
-      rank: 6,
-      suit: 'Clubs!'
-    },
-    {
-      rank: 2,
-      suit: 'Clubs!',
+      rank: 5,
+      suit: 'Spades!',
+      color: 'B'
     }
   ]);
 
@@ -32,15 +34,22 @@ const Pile1 = (props) => {
       let incomingCardStr = JSON.stringify(incomingCard);
       let prevCardStr = JSON.stringify(prevCard);
       if (cardStack.length > 0) {
-        if (incomingCard.rank !== topCard.rank + 1) {
+        let incomingCardColor;
+        let topCardColor;
+        if (incomingCard.suit === 'Clubs!' || incomingCard.suit === 'Spades!') {
+          incomingCardColor = 'B';
+          } else
+          incomingCardColor = 'R';
+          if (topCard.suit === 'Clubs!' || topCard.suit === 'Spades!') {
+            topCardColor = 'B';
+          } else
+          topCardColor = 'R';
+        if (incomingCard.rank !== topCard.rank - 1) {
           if (incomingCardStr !== prevCardStr) {
             return;
           }
         }
-        if (((topCard.suit === 'Spades!' || topCard.suit === 'Clubs!') &&
-            (incomingCard.suit === 'Hearts!' || incomingCard.suit === 'Diamonds!'))
-            || (topCard.suit === 'Hearts!' || topCard.suit === 'Diamonds!') &&
-            (incomingCard.suit === 'Spades!' || incomingCard.suit === 'Clubs')) {
+        if (incomingCardColor !== topCardColor) {
               setCardStack([...cardStack, ...props.clickedCard]);
               props.removeCard();
         }
