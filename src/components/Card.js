@@ -20,7 +20,6 @@ const Card = (props) => {
       let card = {
         rank: props.rank,
         suit: props.suit,
-        color: props.color
       };
       props.addCard(card);
     }

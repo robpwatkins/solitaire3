@@ -12,15 +12,13 @@ const PileDiv = styled.div`
 
 const Pile1 = (props) => {
   const [cardStack, setCardStack] = useState([
-    // {
-    //   rank: 6,
-    //   suit: 'Clubs!',
-    //   color: 'B'
-    // },
+    {
+      rank: 6,
+      suit: 'Clubs!',
+    },
     {
       rank: 5,
       suit: 'Spades!',
-      color: 'B'
     }
   ]);
 

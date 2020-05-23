@@ -15,12 +15,10 @@ const Pile2 = (props) => {
     {
       rank: 6,
       suit: 'Diamonds!',
-      color: 'R'
     },
     {
       rank: 4,
       suit: 'Hearts!',
-      color: 'R'
     }
   ]);
 
