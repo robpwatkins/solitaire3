@@ -13,16 +13,28 @@ const clickedCard = (state = [], action) => {
   }
 }
 
-const successfulPlace = (state = false, action) => {
+const cardInMove = (state = false, action) => {
   switch(action.type) {
-    case 'SET_SUCCESSFUL_PLACE':
+    case 'SET_CARD_IN_MOVE':
       return {
         ...state,
-        successfulPlace: !state.successfulPlace
+        cardInMove: !cardInMove
       }
     default:
       return state;
   }
 }
 
-export default combineReducers({ clickedCard, successfulPlace });
+const moveSuccessful = (state = false, action) => {
+  switch(action.type) {
+    case 'SET_MOVE_SUCCESSFUL':
+      return {
+        ...state,
+        moveSuccessful: !moveSuccessful
+      }
+      default:
+        return state;
+  }
+}
+
+export default combineReducers({ clickedCard, cardInMove, moveSuccessful });

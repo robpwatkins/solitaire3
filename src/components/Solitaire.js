@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import Deck from '../containers/Deck';
 import Foundations from '../components/Foundations';
 import Tableau from '../components/Tableau';
+import { useOutsideClickAlerter } from '../outsideClickAlert';
 
 const GameBoard = styled.div`
   display: grid;
@@ -15,10 +16,13 @@ const GameBoard = styled.div`
 `;
 
 const Solitaire = () => {
+  const ref = useRef();
+
+  useOutsideClickAlerter(ref, (event) => console.log(event.target));
 
   return (
     <>
-      <GameBoard>
+      <GameBoard className="game-board">
         <Deck />
         <Foundations />
         <Tableau />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 const CardDiv = styled.div`
@@ -14,23 +14,23 @@ const CardDiv = styled.div`
 `;
 
 const Card = (props) => {
+  const ref = useRef();
 
+  // console.log(props.cardInMove, props.clickedCard);
   const handleClick = () => {
-    if (props.clickedCard.length === 0) {
+    if (!props.cardInMove) {
       let card = {
         rank: props.rank,
         suit: props.suit,
       };
+      props.setCardInMove();
       props.addCard(card);
-      console.log(props.clickedCard);
     }
   }
 
   return (
     <>
-      <CardDiv 
-        onClick={handleClick}
-        >
+      <CardDiv onClick={handleClick} ref={ref} className="card">
         {props.rank} of {props.suit}
       </CardDiv>
     </>    

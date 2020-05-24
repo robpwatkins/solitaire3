@@ -1,4 +1,5 @@
 export default {
   clickedCard: [],
-  successfulPlace: false
+  cardInMove: false,
+  moveSuccessful: false
 };

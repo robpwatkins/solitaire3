@@ -11,8 +11,14 @@ export const addCard = (card) => {
   }
 }
 
-export const setSuccessfulState = () => {
+export const setCardInMove = () => {
   return {
-    type: 'SET_SUCCESSFUL_PLACE',
+    type: 'SET_CARD_IN_MOVE',
+  }
+}
+
+export const setMoveSuccessful = () => {
+  return {
+    type: 'SET_MOVE_SUCCESSFUL'
   }
 }
