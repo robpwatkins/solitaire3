@@ -12,68 +12,52 @@ const Foundation1Div = styled.div`
 `;
 
 const Foundation1 = (props) => {
-  const [cardStack, setCardStack] = useState([]);
+  const [cardStack, setCardStack] = useState([{
+    rank: 1,
+    suit: 'Hearts!'
+  }]);
   
   let topCard;
+  if (cardStack.length > 0) topCard = cardStack[cardStack.length - 1];
   
   const prevCard = usePreviousValue(topCard);
   
-  // const handleClick = () => {
-  //   if (props.clickedCard.length > 0) {
-  //     let incomingCard = props.clickedCard[0];
-  //     if (cardStack.length === 0) {
-  //       if (incomingCard.rank !== 1) {
-  //         return;
-  //       }
-  //     }
-  //     let incomingCardStr = JSON.stringify(incomingCard);
-  //     let prevCardStr = JSON.stringify(prevCard);
-  //     if (incomingCardStr !== prevCardStr) {
-  //       return;
-  //     }
-  //     if (incomingCard.rank !== topCard.rank + 1) {
-  //       return;
-  //     }
-  //     setCardStack([cardStack, ...props.clickedCard]);
-  //     props.removeCard();
-  //     // setCurrentRank(incomingRank);
-  //   }
-  //   if (cardStack.length === 0) return; 
-  //   else {
-  //     let cards = cardStack;
-  //     cards.splice(cards.length - 1);
-  //     setCardStack(...cards);
-  //     // setCurrentRank(currentRank - 1);
-  //   }
-  // }
-
   const handleClick = () => {
     if (props.clickedCard.length > 0) {
       let incomingCard = props.clickedCard[0];
       let incomingCardStr = JSON.stringify(incomingCard);
       let prevCardStr = JSON.stringify(prevCard);
       if (cardStack.length === 0) {
-        if (incomingCardStr !== prevCardStr || incomingCard.rank !== 1) return;
-      }
+        console.log({incomingCardStr}, {prevCardStr});
+        if (incomingCardStr === prevCardStr || incomingCard.rank === 1) {
+          setCardStack([...cardStack, ...props.clickedCard]);
+          props.removeCard();
+        } 
+        else return;
+      } else
       if (incomingCard.rank === topCard.rank + 1) {
         let incomingCardColor;
         let topCardColor;
         if (incomingCard.suit === 'Spades!' || incomingCard.suit === 'Clubs!') {
           incomingCardColor = 'B';
-        } else
-        incomingCardColor = 'R';
-        if (topCard.suit === 'Spades!' || topCard.suit === 'Clubs!') {
-          incomingCardColor = 'B';
-        } else
-        topCardColor = 'R';
-        if (incomingCardColor !== topCardColor) {
-          setCardStack([...cardStack, ...props.clickedCard]);
-          props.removeCard();
-        }
-      }
-    }
-    setCardStack([...cardStack, ...props.clickedCard]);
-    props.removeCard();
+          } else
+          incomingCardColor = 'R';
+          if (topCard.suit === 'Spades!' || topCard.suit === 'Clubs!') {
+            incomingCardColor = 'B';
+            } else
+            topCardColor = 'R';
+            if (incomingCardColor !== topCardColor) {
+                setCardStack([...cardStack, ...props.clickedCard]);
+                props.removeCard();
+              }
+            }
+          } else {
+            console.log('heyoo');
+            let cards = cardStack;
+            cards.splice(cards.length - 1);
+            setCardStack([...cards]);
+          }
+            
   }  
 
   return (

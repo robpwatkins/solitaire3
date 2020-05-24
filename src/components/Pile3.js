@@ -14,7 +14,7 @@ const Pile3 = (props) => {
   const [cardStack, setCardStack] = useState([
     {
       rank: 3,
-      suit: 'Clubs!'
+      suit: 'Diamonds!'
     }
   ]);
 
