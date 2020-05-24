@@ -12,10 +12,7 @@ const Foundation1Div = styled.div`
 `;
 
 const Foundation1 = (props) => {
-  const [cardStack, setCardStack] = useState([{
-    rank: 1,
-    suit: 'Hearts!'
-  }]);
+  const [cardStack, setCardStack] = useState([]);
   
   let topCard;
   if (cardStack.length > 0) topCard = cardStack[cardStack.length - 1];
@@ -28,7 +25,6 @@ const Foundation1 = (props) => {
       let incomingCardStr = JSON.stringify(incomingCard);
       let prevCardStr = JSON.stringify(prevCard);
       if (cardStack.length === 0) {
-        console.log({incomingCardStr}, {prevCardStr});
         if (incomingCardStr === prevCardStr || incomingCard.rank === 1) {
           setCardStack([...cardStack, ...props.clickedCard]);
           props.removeCard();
@@ -52,7 +48,6 @@ const Foundation1 = (props) => {
               }
             }
           } else {
-            console.log('heyoo');
             let cards = cardStack;
             cards.splice(cards.length - 1);
             setCardStack([...cards]);
