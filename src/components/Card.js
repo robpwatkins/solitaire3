@@ -22,6 +22,7 @@ const Card = (props) => {
         suit: props.suit,
       };
       props.addCard(card);
+      console.log(props.clickedCard);
     }
   }
 

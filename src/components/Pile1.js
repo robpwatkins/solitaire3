@@ -6,6 +6,7 @@ import { usePreviousValue } from '../usePreviousValue';
 const PileDiv = styled.div`
   grid-column: 1 / 2;
   height: 200px;
+  box-shadow: ${props => props.clickedBorder ? "0 0 0 5px #fbe555" : ""};
   border: 3px solid #282c34;
   border-radius: 10px;
   `;
@@ -13,20 +14,26 @@ const PileDiv = styled.div`
 const Pile1 = (props) => {
   const [cardStack, setCardStack] = useState([
     {
-      rank: 2,
+      rank: 1,
       suit: 'Clubs!',
     }
   ]);
+  const [isClicked, setIsClicked] = useState(false);
 
   let topCard = cardStack[cardStack.length - 1];
 
   const prevCard = usePreviousValue(topCard);
 
+  const removeCard = () => {
+    
+  }
+
   const handleClick = () => {
+    let incomingCard = props.clickedCard[0];
+    let incomingCardStr = JSON.stringify(incomingCard);
+    let prevCardStr = JSON.stringify(prevCard);
+    // if (incomingCardStr === prevCardStr) setIsClicked(!isClicked);
     if (props.clickedCard.length > 0) {
-      let incomingCard = props.clickedCard[0];
-      let incomingCardStr = JSON.stringify(incomingCard);
-      let prevCardStr = JSON.stringify(prevCard);
       if (cardStack.length > 0) {
         let incomingCardColor;
         let topCardColor;
@@ -49,6 +56,7 @@ const Pile1 = (props) => {
         props.removeCard();
       } else return;
     } else {
+      // setIsClicked(!isClicked);
       let cards = cardStack;
       cards.splice(cards.length - 1);
       setCardStack([...cards]);
@@ -56,7 +64,10 @@ const Pile1 = (props) => {
   }
 
   return (
-    <PileDiv onClick={handleClick}>
+    <PileDiv 
+      onClick={handleClick}
+      {...(isClicked && {clickedBorder: true})}
+    >
       {cardStack.length > 0 && (
         <Card {...topCard} />
       )}

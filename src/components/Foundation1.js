@@ -7,7 +7,7 @@ const Foundation1Div = styled.div`
   width: 100%;
   height: 200px;
   grid-column: 4 / 5;
-  border: 3px solid #345c7d;
+  border: 3px solid #575a5f;
   border-radius: 10px;
 `;
 
@@ -19,6 +19,7 @@ const Foundation1 = (props) => {
   
   const prevCard = usePreviousValue(topCard);
   
+  
   const handleClick = () => {
     if (props.clickedCard.length > 0) {
       let incomingCard = props.clickedCard[0];
@@ -28,6 +29,7 @@ const Foundation1 = (props) => {
         if (incomingCardStr === prevCardStr || incomingCard.rank === 1) {
           setCardStack([...cardStack, ...props.clickedCard]);
           props.removeCard();
+          props.setSuccessfulPlace();
         } 
         else return;
       } else
@@ -45,12 +47,14 @@ const Foundation1 = (props) => {
             if (incomingCardColor !== topCardColor) {
                 setCardStack([...cardStack, ...props.clickedCard]);
                 props.removeCard();
+                props.setSuccessfulPlace();
               }
             }
           } else {
             let cards = cardStack;
             cards.splice(cards.length - 1);
             setCardStack([...cards]);
+            props.setSuccessfulPlace();
           }
             
   }  

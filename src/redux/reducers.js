@@ -13,4 +13,16 @@ const clickedCard = (state = [], action) => {
   }
 }
 
-export default combineReducers({ clickedCard });
+const successfulPlace = (state = false, action) => {
+  switch(action.type) {
+    case 'SET_SUCCESSFUL_PLACE':
+      return {
+        ...state,
+        successfulPlace: !state.successfulPlace
+      }
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({ clickedCard, successfulPlace });

@@ -10,3 +10,9 @@ export const addCard = (card) => {
     value: card
   }
 }
+
+export const setSuccessfulState = () => {
+  return {
+    type: 'SET_SUCCESSFUL_PLACE',
+  }
+}
