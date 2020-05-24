@@ -12,13 +12,13 @@ const PileDiv = styled.div`
 
 const Pile2 = (props) => {
   const [cardStack, setCardStack] = useState([
-    // {
-    //   rank: 6,
-    //   suit: 'Diamonds!',
-    // },
     {
       rank: 4,
       suit: 'Hearts!',
+    },
+    {
+      rank: 1,
+      suit: 'Diamonds!',
     }
   ]);
 
@@ -36,27 +36,22 @@ const Pile2 = (props) => {
         let topCardColor;
         if (incomingCard.suit === 'Clubs!' || incomingCard.suit === 'Spades!') {
           incomingCardColor = 'B';
-          } else
-          incomingCardColor = 'R';
+          } else incomingCardColor = 'R';
           if (topCard.suit === 'Clubs!' || topCard.suit === 'Spades!') {
             topCardColor = 'B';
-          } else
-          topCardColor = 'R';
+          } else topCardColor = 'R';
         if (incomingCard.rank !== topCard.rank - 1) {
-          if (incomingCardStr !== prevCardStr) {
-            return;
-          }
+          if (incomingCardStr !== prevCardStr) return;
         }
         if (incomingCardColor !== topCardColor) {
               setCardStack([...cardStack, ...props.clickedCard]);
               props.removeCard();
         }
       }
-      if (incomingCardStr !== prevCardStr) {
-        return;
-      }
-      setCardStack([...cardStack, ...props.clickedCard]);
-      props.removeCard();
+      if (incomingCardStr === prevCardStr || incomingCard.rank === 13) {
+        setCardStack([...cardStack, ...props.clickedCard]);
+        props.removeCard();
+      } else return;
     } else {
       let cards = cardStack;
       cards.splice(cards.length - 1);

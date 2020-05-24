@@ -15,7 +15,19 @@ const Pile4 = (props) => {
     {
       rank: 1,
       suit: 'Hearts!'
-    }
+    },
+    {
+      rank: 11,
+      suit: 'Clubs!'
+    },
+    {
+      rank: 5,
+      suit: 'Hearts!'
+    },
+    {
+      rank: 7,
+      suit: 'Spades!'
+    },
   ]);
 
   let topCard = cardStack[cardStack.length - 1];
@@ -32,27 +44,22 @@ const Pile4 = (props) => {
         let topCardColor;
         if (incomingCard.suit === 'Clubs!' || incomingCard.suit === 'Spades!') {
           incomingCardColor = 'B';
-          } else
-          incomingCardColor = 'R';
+          } else incomingCardColor = 'R';
           if (topCard.suit === 'Clubs!' || topCard.suit === 'Spades!') {
             topCardColor = 'B';
-          } else
-          topCardColor = 'R';
+          } else topCardColor = 'R';
         if (incomingCard.rank !== topCard.rank - 1) {
-          if (incomingCardStr !== prevCardStr) {
-            return;
-          }
+          if (incomingCardStr !== prevCardStr) return;
         }
         if (incomingCardColor !== topCardColor) {
               setCardStack([...cardStack, ...props.clickedCard]);
               props.removeCard();
         }
       }
-      if (incomingCardStr !== prevCardStr) {
-        return;
-      }
-      setCardStack([...cardStack, ...props.clickedCard]);
-      props.removeCard();
+      if (incomingCardStr === prevCardStr || incomingCard.rank === 13) {
+        setCardStack([...cardStack, ...props.clickedCard]);
+        props.removeCard();
+      } else return;
     } else {
       let cards = cardStack;
       cards.splice(cards.length - 1);
